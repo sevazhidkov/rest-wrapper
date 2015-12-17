@@ -33,14 +33,23 @@ def validate_id(post_id):
         return False
     return True
 
+
+def print_post(post):
+    for (key, value) in post.items():
+        print key + ':', value
+
 print('Loading data')
 # If user didn't provided id, print all posts.
 # Else - validate id and get post by id.
 if len(sys.argv) == 1:
-    pprint(get_all())
+    posts = get_all()
+    for post in posts:
+        print_post(post)
+        print
 else:
     post_id = sys.argv[1]
     if validate_id(post_id):
-        pprint(get_by_id(int(post_id)))
+        post = get_by_id(int(post_id))
+        print_post(post)
     else:
         print('Quitting')
