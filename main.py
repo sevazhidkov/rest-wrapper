@@ -33,6 +33,7 @@ def validate_id(post_id):
         return False
     return True
 
+print('Loading data')
 # If user didn't provided id, print all posts.
 # Else - validate id and get post by id.
 if len(sys.argv) == 1:
