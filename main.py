@@ -14,13 +14,21 @@ except ImportError:
 API_URL = 'http://jsonplaceholder.typicode.com/posts/'
 
 
+def send_request(url):
+    try:
+        return requests.get(url)
+    except requests.exceptions.RequestException as error:
+        print('Error while sending request: ', error)
+        exit()
+
+
 def get_by_id(id):
-    response = requests.get(API_URL + str(id))
+    response = send_request(API_URL + str(id))
     return json.loads(response.text)
 
 
 def get_all():
-    response = requests.get(API_URL)
+    response = send_request(API_URL)
     return json.loads(response.text)
 
 
